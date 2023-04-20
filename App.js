@@ -4,8 +4,6 @@ import { captureScreen } from 'react-native-view-shot';
 import { MD3LightTheme, Provider as PaperProvider } from 'react-native-paper';
 import Editor from './components/Editor';
 import Widget from './components/Widget';
-import { SafeAreaProvider } from 'react-native-safe-area-context/src/SafeAreaContext';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
 const App = () => {
   const [src, setSrc] = useState('');
@@ -48,26 +46,24 @@ const App = () => {
   };
 
   return (
-    <SafeAreaProvider>
-      <SafeAreaView>
-        <PaperProvider
-          theme={{
-            ...MD3LightTheme,
-            colors: {
-              ...MD3LightTheme.colors,
-              primary: '#6552ff',
-              background: '#ffffff',
-              surface: '#ffffff',
-              surfaceDisabled: 'rgb(229, 225, 236)',
-              tertiary: '#160647',
-            },
-            roundness: 50,
-          }}>
-          <Editor reset={onReset} src={src} visible={visible} />
-          <Widget onPress={onScreenCapture} visible={widgetVisible} />
-        </PaperProvider>
-      </SafeAreaView>
-    </SafeAreaProvider>
+    <>
+      <PaperProvider
+        theme={{
+          ...MD3LightTheme,
+          colors: {
+            ...MD3LightTheme.colors,
+            primary: '#6552ff',
+            background: '#ffffff',
+            surface: '#ffffff',
+            surfaceDisabled: 'rgb(229, 225, 236)',
+            tertiary: '#160647',
+          },
+          roundness: 50,
+        }}>
+        <Editor reset={onReset} src={src} visible={visible} />
+        <Widget onPress={onScreenCapture} visible={widgetVisible} />
+      </PaperProvider>
+    </>
   );
 };
 
