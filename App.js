@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Alert } from 'react-native';
+import { Alert, View } from 'react-native';
 import { captureScreen } from 'react-native-view-shot';
 import { MD3LightTheme, Provider as PaperProvider } from 'react-native-paper';
 import Editor from './components/Editor';
@@ -46,7 +46,7 @@ const App = () => {
   };
 
   return (
-    <>
+    <View style={{ position: 'absolute', zIndex: 999999999 }}>
       <PaperProvider
         theme={{
           ...MD3LightTheme,
@@ -63,7 +63,7 @@ const App = () => {
         <Editor reset={onReset} src={src} visible={visible} />
         <Widget onPress={onScreenCapture} visible={widgetVisible} />
       </PaperProvider>
-    </>
+    </View>
   );
 };
 
